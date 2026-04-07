@@ -10,7 +10,7 @@ const SearchForm = () => {
   const handleSearch = async (e) => {
     e.preventDefault();
 
-    // Client-side validation using JavaScript [cite: 6, 17, 28]
+    // Client-side validation using JavaScript
     if (!bookingId || !vehicleId) {
       alert("Both Booking ID and Vehicle ID are required!");
       return;
@@ -20,10 +20,10 @@ const SearchForm = () => {
       const response = await axios.get(`http://localhost:5000/api/search`, {
         params: { bookingId, vehicleId }
       });
-      // If record exists, navigate to details [cite: 16, 34]
+      // If record exists, navigate to details 
       navigate('/details', { state: { record: response.data } });
     } catch (error) {
-      // Failure page when record is not found [cite: 7, 19]
+      // Failure page when record is not found 
       navigate('/status', { state: { success: false, message: "Record not found in database." } });
     }
   };
